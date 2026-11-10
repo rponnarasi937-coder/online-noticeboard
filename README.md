@@ -165,28 +165,35 @@ Or in **phpMyAdmin** / **MySQL Workbench**:
 
 ## ⚡ How to Run in VS Code
 
-### Method A: Full-Stack Mode (Spring Boot + Frontend + MySQL)
+### Method 1: Pure Java Desktop Application (Swing GUI) ☕
+If your college/lab syllabus requires a **100% Java application**:
+1. In VS Code, navigate to `src/main/java/com/kec/noticeboard/KecNoticeBoardSwingApp.java`.
+2. Click the **"Run"** button right above `public static void main(String[] args)`.
+   *(Or double-click `run_java_gui.bat` in your project folder, or run `mvn exec:java` in the terminal).*
+3. A modern Java GUI window will open featuring:
+   - **🏛️ Home Screen**: College banner, emergency alert ticker, live stats, and latest bulletins.
+   - **🎓 Student Board**: Live keyword search, category filter, priority filter, and notice details window.
+   - **📊 Admin Dashboard**: Add new notices, edit, delete, toggle live/draft status, and attach files.
+   - **🔒 Admin Login**: Sign in with `admin` / `admin123`.
+
+---
+
+### Method 2: Full-Stack Java Web Mode (Spring Boot + MySQL)
 1. **Open the project in VS Code**:
-   - File -> Open Folder -> Select `d:\Java\javamini` (or your project directory).
-2. **Open Integrated Terminal** (`Ctrl + \``).
+   - File -> Open Folder -> Select `d:\Java\javamini`.
+2. **Open Integrated Terminal** (`Ctrl + ~`).
 3. **Run the Spring Boot Application**:
    ```bash
    mvn spring-boot:run
    ```
-   *(If you want to run with the zero-config in-memory database without starting MySQL, run: `mvn spring-boot:run -Dspring-boot.run.arguments="--spring.profiles.active=h2"`)*.
-4. **Open in Browser**:
-   - Open: [http://localhost:8080](http://localhost:8080)
-   - Home Page: `http://localhost:8080/index.html`
-   - Student Board: `http://localhost:8080/notices.html`
-   - Admin Login: `http://localhost:8080/login.html`
-   - Admin Dashboard: `http://localhost:8080/admin-dashboard.html`
+   *(Or for zero-config in-memory database: `mvn spring-boot:run -Dspring-boot.run.arguments="--spring.profiles.active=h2"`)*.
+4. Open [http://localhost:8080](http://localhost:8080) in your browser.
 
-### Method B: Frontend-Only Mode (VS Code Live Server)
-If you just want to demonstrate the responsive UI, search, category filters, and Admin CRUD without running Java:
-1. In VS Code, install the extension **Live Server** (by Ritwick Dey).
-2. Right-click `src/main/resources/static/index.html` (or `frontend/index.html`).
-3. Select **"Open with Live Server"**.
-4. The frontend will launch at `http://127.0.0.1:5500/` and seamlessly run with local storage sample data!
+---
+
+### Method 3: Static / Live Server Mode
+Open `index.html` with Live Server or visit your live GitHub link:
+👉 **https://rponnarasi937-coder.github.io/online-noticeboard/**
 
 ---
 
