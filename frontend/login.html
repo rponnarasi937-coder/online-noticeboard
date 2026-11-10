@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login | KEC Online Notice Board</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .login-wrapper {
+      min-height: calc(100vh - 180px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 1rem;
+      background: radial-gradient(circle at top, #e0f2fe 0%, #f8fafc 70%);
+    }
+
+    .login-card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-xl);
+      width: 100%;
+      max-width: 440px;
+      overflow: hidden;
+      animation: pop-up 0.35s ease-out;
+    }
+
+    @keyframes pop-up {
+      from { transform: translateY(15px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .login-card-header {
+      background: linear-gradient(135deg, var(--primary-navy-dark) 0%, var(--primary-navy) 100%);
+      color: #ffffff;
+      padding: 2.2rem 2rem 1.8rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .login-card-header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--accent-cyan);
+    }
+
+    .login-crest {
+      width: 58px;
+      height: 58px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 2px solid var(--accent-cyan);
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .login-card-header h2 {
+      color: #ffffff;
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+    }
+
+    .login-card-header p {
+      color: #94a3b8;
+      font-size: 0.85rem;
+    }
+
+    .login-card-body {
+      padding: 2.2rem 2rem;
+    }
+
+    .demo-credentials-box {
+      background: var(--accent-ice);
+      border: 1px dashed var(--secondary-blue);
+      border-radius: var(--radius-md);
+      padding: 0.85rem 1rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.82rem;
+      color: var(--primary-navy);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .demo-credentials-box code {
+      background: #ffffff;
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      font-weight: 700;
+      color: var(--secondary-blue);
+      border: 1px solid #bfdbfe;
+    }
+
+    .input-icon-group {
+      position: relative;
+    }
+
+    .input-icon-group input {
+      padding-left: 2.5rem;
+    }
+
+    .input-icon-prefix {
+      position: absolute;
+      left: 0.85rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 1rem;
+      pointer-events: none;
+    }
+
+    .password-toggle-btn {
+      position: absolute;
+      right: 0.85rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="main-header">
+    <div class="container navbar">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon">KEC</div>
+        <div class="brand-text">
+          <h1>KEC Online Notice Board</h1>
+          <span>Administrative Control System</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html">← Back to Home</a></li>
+        <li><a href="notices.html">Student Board</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Login Form Section -->
+  <main class="login-wrapper">
+    <div class="login-card">
+      <div class="login-card-header">
+        <div class="login-crest">🔒</div>
+        <h2>Admin Authentication</h2>
+        <p>Restricted to Authorized College Staff</p>
+      </div>
+
+      <div class="login-card-body">
+        <!-- Demo Credentials Notification -->
+        <div class="demo-credentials-box">
+          <div>
+            <strong>Demo Credentials:</strong><br>
+            User: <code>admin</code> &bull; Pass: <code>admin123</code>
+          </div>
+          <button type="button" class="btn btn-secondary" id="fillDemoBtn" style="font-size: 0.75rem; padding: 0.35rem 0.6rem;">
+            Auto Fill
+          </button>
+        </div>
+
+        <form id="adminLoginForm">
+          <!-- Username Input -->
+          <div class="form-group" style="margin-bottom: 1.25rem;">
+            <label for="usernameInput">Admin Username</label>
+            <div class="input-icon-group">
+              <span class="input-icon-prefix">👤</span>
+              <input 
+                type="text" 
+                id="usernameInput" 
+                class="form-control" 
+                placeholder="Enter admin username" 
+                required 
+                autocomplete="username"
+              >
+            </div>
+          </div>
+
+          <!-- Password Input -->
+          <div class="form-group" style="margin-bottom: 1.5rem;">
+            <label for="passwordInput">Secret Password</label>
+            <div class="input-icon-group">
+              <span class="input-icon-prefix">🔑</span>
+              <input 
+                type="password" 
+                id="passwordInput" 
+                class="form-control" 
+                placeholder="Enter secure password" 
+                required 
+                autocomplete="current-password"
+              >
+              <button type="button" class="password-toggle-btn" id="togglePasswordBtn" title="Show or hide password">
+                👁️
+              </button>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="btn btn-primary" id="loginSubmitBtn" style="width: 100%; padding: 0.75rem; font-size: 0.95rem;">
+            Authenticate & Access Dashboard ➔
+          </button>
+        </form>
+
+        <div style="text-align: center; margin-top: 1.5rem; font-size: 0.82rem; color: var(--text-muted);">
+          Protected by Spring Security & BCrypt Password Encryption.<br>
+          <a href="notices.html" style="font-weight: 600; color: var(--secondary-blue);">Return to Student Notice Board</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-bottom" style="border-top: none; padding-top: 0;">
+        <p>&copy; 2026 Kongu Engineering College (KEC). All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

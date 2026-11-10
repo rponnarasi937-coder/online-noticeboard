@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Notice Board | KEC Online Notice Board</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Top Emergency Ticker -->
+  <div class="top-ticker-bar">
+    <div class="container ticker-container">
+      <div class="ticker-label"><span>⚡</span> ALERT</div>
+      <div class="ticker-content" id="heroTickerContent">
+        <span>KEC Online Notice Board - Live Campus Circulars</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="main-header">
+    <div class="container navbar">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon">KEC</div>
+        <div class="brand-text">
+          <h1>KEC Online Notice Board</h1>
+          <span>Student Notice Portal</span>
+        </div>
+      </a>
+
+      <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle navigation">☰</button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="notices.html" class="active">All Notices</a></li>
+        <li class="nav-actions">
+          <a href="login.html" class="btn btn-secondary" id="navAuthBtn">Admin Portal</a>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Main Student Notice Board Area -->
+  <main class="container" style="padding-top: 2rem; padding-bottom: 4rem;">
+    <!-- Page Title & Header -->
+    <div class="section-header" style="margin-bottom: 1.5rem; padding-top: 0;">
+      <div>
+        <h2 class="section-title">Student Notice Board</h2>
+        <p class="section-subtitle">Browse, search and filter all officially published academic notices</p>
+      </div>
+      <div id="noticeCountBadge" style="background: var(--accent-ice); border: 1.5px solid #bfdbfe; color: var(--secondary-blue); font-weight: 700; padding: 0.4rem 0.9rem; border-radius: var(--radius-full); font-size: 0.85rem;">
+        Showing notices
+      </div>
+    </div>
+
+    <!-- Search & Filter Controls -->
+    <div class="search-filter-card">
+      <div class="filter-row">
+        <!-- Search Input -->
+        <div class="form-group">
+          <label for="searchInput">🔍 Search Notices</label>
+          <input type="text" id="searchInput" class="form-control" placeholder="Search by title, keywords or department...">
+        </div>
+
+        <!-- Priority Filter -->
+        <div class="form-group">
+          <label for="priorityFilter">⚡ Priority</label>
+          <select id="priorityFilter" class="form-control">
+            <option value="">All Priorities</option>
+            <option value="URGENT">Urgent Only</option>
+            <option value="HIGH">High Priority</option>
+            <option value="NORMAL">Normal Priority</option>
+          </select>
+        </div>
+
+        <!-- Sort Filter -->
+        <div class="form-group">
+          <label for="sortFilter">📅 Sort By</label>
+          <select id="sortFilter" class="form-control">
+            <option value="latest">Latest First</option>
+            <option value="oldest">Oldest First</option>
+          </select>
+        </div>
+
+        <!-- Reset Button -->
+        <div class="form-group" style="justify-content: flex-end;">
+          <label>&nbsp;</label>
+          <button id="resetFiltersBtn" class="btn btn-secondary" title="Reset Filters">
+            Reset ↻
+          </button>
+        </div>
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div style="margin-top: 1.25rem; border-top: 1px solid var(--border-color); padding-top: 1rem;">
+        <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.5rem; display: block;">
+          Filter by Category:
+        </span>
+        <div class="category-pill-list" id="categoryPillList">
+          <button class="category-pill active" data-category="">All Notices</button>
+          <button class="category-pill" data-category="EXAMINATION">📝 Examination</button>
+          <button class="category-pill" data-category="PLACEMENTS">💼 Placements</button>
+          <button class="category-pill" data-category="EVENTS">🎯 Events</button>
+          <button class="category-pill" data-category="DEPARTMENT">🏛️ Department</button>
+          <button class="category-pill" data-category="HOLIDAYS">📅 Holidays</button>
+          <button class="category-pill" data-category="GENERAL">📢 General</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notices Grid -->
+    <div class="notices-grid" id="studentNoticesGrid">
+      <div class="empty-state">
+        <div class="empty-state-icon">⏳</div>
+        <h3>Loading campus circulars...</h3>
+        <p>Fetching notices from the database</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Notice Details Modal Dialog -->
+  <div class="modal-overlay" id="noticeModal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h2 id="modalNoticeTitle">Notice Title</h2>
+        <button class="modal-close-btn" id="modalCloseBtn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-meta-grid">
+          <div class="modal-meta-item">
+            <span>Category</span>
+            <strong id="modalNoticeCategory">Examination</strong>
+          </div>
+          <div class="modal-meta-item">
+            <span>Priority</span>
+            <strong id="modalNoticePriority">Urgent</strong>
+          </div>
+          <div class="modal-meta-item">
+            <span>Notice Date</span>
+            <strong id="modalNoticeDate">Nov 10, 2026</strong>
+          </div>
+          <div class="modal-meta-item">
+            <span>Department</span>
+            <strong id="modalNoticeDept">All Departments</strong>
+          </div>
+        </div>
+
+        <div class="modal-description" id="modalNoticeDesc">
+          Notice content goes here...
+        </div>
+
+        <div id="modalAttachmentSection" style="display: none;">
+          <h4 style="font-size: 0.9rem; color: var(--primary-navy); margin-bottom: 0.5rem;">Official Attachment</h4>
+          <div class="modal-attachment-box">
+            <div class="attachment-info">
+              <div class="attachment-icon">📄</div>
+              <div>
+                <div class="attachment-name" id="modalAttachmentName">Attachment.pdf</div>
+                <div class="attachment-size">Official Circular Document</div>
+              </div>
+            </div>
+            <a href="#" id="modalAttachmentDownloadBtn" target="_blank" class="btn btn-secondary" style="font-size: 0.8rem; padding: 0.45rem 0.9rem;">
+              Download File 📥
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <span style="font-size: 0.8rem; color: var(--text-muted);">Posted by: <strong id="modalNoticePostedBy">Principal Office</strong></span>
+        <div style="display: flex; gap: 0.5rem;">
+          <button class="btn btn-secondary" onclick="window.print()">Print 🖨️</button>
+          <button class="btn btn-primary" id="modalCloseFooterBtn">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-bottom" style="border-top: none; padding-top: 0;">
+        <p>&copy; 2026 Kongu Engineering College (KEC). All Rights Reserved. Student Notice Board.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/notices.js"></script>
+</body>
+</html>

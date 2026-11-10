@@ -1,0 +1,27 @@
+# Target build directory
+target/
+*.class
+
+# Log files
+*.log
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+
+# Eclipse
+.settings/
+.project
+.classpath
+
+# VS Code
+.vscode/
+
+# OS Files
+Thumbs.db
+.DS_Store
+
+# Temporary uploads (keep sample attachment)
+uploads/*
+!uploads/End_Semester_Exam_TimeTable_2026.pdf

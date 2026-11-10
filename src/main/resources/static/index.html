@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KEC Online Notice Board | Kongu Engineering College</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Top Urgent Notice Ticker Bar -->
+  <div class="top-ticker-bar">
+    <div class="container ticker-container">
+      <div class="ticker-label">
+        <span>⚡</span> ALERT
+      </div>
+      <div class="ticker-content" id="heroTickerContent">
+        <span>Loading latest college announcements...</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation Header -->
+  <header class="main-header">
+    <div class="container navbar">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon">KEC</div>
+        <div class="brand-text">
+          <h1>KEC Online Notice Board</h1>
+          <span>Autonomous • Affiliated to Anna University</span>
+        </div>
+      </a>
+
+      <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle navigation">
+        ☰
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="notices.html">All Notices</a></li>
+        <li><a href="#categoriesSection">Categories</a></li>
+        <li><a href="#aboutSection">About</a></li>
+        <li class="nav-actions">
+          <a href="login.html" class="btn btn-secondary" id="navAuthBtn">Admin Portal</a>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span>🏛️</span> Official Campus Communications
+          </div>
+          <h2 class="hero-title">
+            Stay Updated with <span>KEC Campus</span> Bulletins & Circulars
+          </h2>
+          <p class="hero-subtitle">
+            Access official autonomous exam schedules, placement opportunities, symposiums, department notifications, and holiday circulars in real-time.
+          </p>
+          <div class="hero-actions">
+            <a href="notices.html" class="btn btn-accent" style="padding: 0.8rem 1.6rem; font-size: 0.95rem;">
+              Browse All Notices →
+            </a>
+            <a href="login.html" class="btn btn-outline-white" style="padding: 0.8rem 1.4rem;">
+              Admin Dashboard
+            </a>
+          </div>
+        </div>
+
+        <!-- Live Quick Stats Counter Card -->
+        <div class="hero-stats-card">
+          <div class="stats-grid-hero">
+            <div class="stat-item-hero">
+              <div class="stat-number-hero" id="heroTotalNotices">--</div>
+              <div class="stat-label-hero">Total Bulletins</div>
+            </div>
+            <div class="stat-item-hero">
+              <div class="stat-number-hero" id="heroExamNotices">--</div>
+              <div class="stat-label-hero">Exams & Tests</div>
+            </div>
+            <div class="stat-item-hero">
+              <div class="stat-number-hero" id="heroPlacementNotices">--</div>
+              <div class="stat-label-hero">Placement Drives</div>
+            </div>
+            <div class="stat-item-hero">
+              <div class="stat-number-hero" id="heroEventsNotices">--</div>
+              <div class="stat-label-hero">Events & Symposia</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Notice Categories Showcase -->
+  <section class="container" id="categoriesSection" style="padding-top: 3rem;">
+    <div class="section-header">
+      <div>
+        <h2 class="section-title">Notice Categories</h2>
+        <p class="section-subtitle">Quickly filter circulars based on your academic and extracurricular needs</p>
+      </div>
+      <a href="notices.html" class="btn btn-secondary">View All Categories →</a>
+    </div>
+
+    <div class="categories-overview-grid">
+      <div class="category-card" onclick="location.href='notices.html?category=EXAMINATION'">
+        <div class="category-icon">📝</div>
+        <h3>Examination</h3>
+        <p>Schedules, hall tickets & revaluation circulars</p>
+      </div>
+
+      <div class="category-card" onclick="location.href='notices.html?category=PLACEMENTS'">
+        <div class="category-icon">💼</div>
+        <h3>Placements</h3>
+        <p>Campus recruitment drives, internships & packages</p>
+      </div>
+
+      <div class="category-card" onclick="location.href='notices.html?category=EVENTS'">
+        <div class="category-icon">🎯</div>
+        <h3>Events</h3>
+        <p>National symposiums, hackathons & workshops</p>
+      </div>
+
+      <div class="category-card" onclick="location.href='notices.html?category=DEPARTMENT'">
+        <div class="category-icon">🏛️</div>
+        <h3>Department</h3>
+        <p>Project reviews, lab schedules & faculty circulars</p>
+      </div>
+
+      <div class="category-card" onclick="location.href='notices.html?category=HOLIDAYS'">
+        <div class="category-icon">📅</div>
+        <h3>Holidays</h3>
+        <p>Festival holidays, semester breaks & university circulars</p>
+      </div>
+
+      <div class="category-card" onclick="location.href='notices.html?category=GENERAL'">
+        <div class="category-icon">📢</div>
+        <h3>General</h3>
+        <p>Bus routes, hostel notices, scholarships & ID cards</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest Notices Section -->
+  <section class="container" style="padding-bottom: 4rem;">
+    <div class="section-header">
+      <div>
+        <h2 class="section-title">Latest Announcements</h2>
+        <p class="section-subtitle">Most recent publications sorted by date and urgency</p>
+      </div>
+      <a href="notices.html" class="btn btn-primary">Open Student Portal</a>
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="notices-grid" id="latestNoticesGrid">
+      <div class="empty-state">
+        <div class="empty-state-icon">⏳</div>
+        <h3>Fetching campus bulletins...</h3>
+        <p>Connecting to KEC Notice Board server</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="container" id="aboutSection" style="padding-bottom: 4rem;">
+    <div style="background: #ffffff; border-radius: var(--radius-lg); border: 1px solid var(--border-color); padding: 2.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center;">
+      <div>
+        <div class="hero-badge" style="background: var(--accent-ice); color: var(--secondary-blue); border-color: #bfdbfe;">
+          About KEC Online Notice Board
+        </div>
+        <h3 style="font-size: 1.6rem; color: var(--primary-navy); margin-bottom: 1rem;">
+          Instant, Paperless Campus Communication
+        </h3>
+        <p style="color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.7;">
+          Designed specifically for Kongu Engineering College (KEC), this modern centralized notice repository ensures students, staff, and faculty never miss an essential deadline. From exam schedules to multi-million package campus drives, everything is published securely with role-based administrative control.
+        </p>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.5rem; color: var(--primary-navy); font-weight: 600;">
+          <li>✓ 100% Mobile and Tablet Responsive</li>
+          <li>✓ Categorized & Filterable Search</li>
+          <li>✓ Downloadable Official PDF Circulars</li>
+          <li>✓ Secured with Spring Security & BCrypt Password Hashing</li>
+        </ul>
+      </div>
+      <div style="background: var(--accent-ice); border-radius: var(--radius-md); padding: 2rem; border: 1px dashed var(--secondary-blue);">
+        <h4 style="color: var(--primary-navy); margin-bottom: 0.75rem;">Project Architecture</h4>
+        <div style="display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.9rem;">
+          <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #dbeafe; padding-bottom: 0.35rem;">
+            <span style="color: var(--text-muted);">Frontend:</span>
+            <strong>Vanilla HTML5, CSS3, Modern JS</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #dbeafe; padding-bottom: 0.35rem;">
+            <span style="color: var(--text-muted);">Backend:</span>
+            <strong>Java Spring Boot 3.3 (REST APIs)</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #dbeafe; padding-bottom: 0.35rem;">
+            <span style="color: var(--text-muted);">Database:</span>
+            <strong>MySQL / Hibernate JPA</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #dbeafe; padding-bottom: 0.35rem;">
+            <span style="color: var(--text-muted);">Security:</span>
+            <strong>JWT + BCrypt Hashing</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; padding-top: 0.2rem;">
+            <span style="color: var(--text-muted);">Admin Credential:</span>
+            <code>admin / admin123</code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Notice Details Modal Dialog -->
+  <div class="modal-overlay" id="noticeModal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h2 id="modalNoticeTitle">Notice Title</h2>
+        <button class="modal-close-btn" id="modalCloseBtn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-meta-grid">
+          <div class="modal-meta-item">
+            <span>Category</span>
+            <strong id="modalNoticeCategory">Examination</strong>
+          </div>
+          <div class="modal-meta-item">
+            <span>Priority</span>
+            <strong id="modalNoticePriority">Urgent</strong>
+          </div>
+          <div class="modal-meta-item">
+            <span>Publish Date</span>
+            <strong id="modalNoticeDate">Nov 10, 2026</strong>
+          </div>
+          <div class="modal-meta-item">
+            <span>Audience</span>
+            <strong id="modalNoticeDept">All Departments</strong>
+          </div>
+        </div>
+
+        <div class="modal-description" id="modalNoticeDesc">
+          Notice content details...
+        </div>
+
+        <div id="modalAttachmentSection" style="display: none;">
+          <h4 style="font-size: 0.9rem; color: var(--primary-navy); margin-bottom: 0.5rem;">Official Attachment</h4>
+          <div class="modal-attachment-box">
+            <div class="attachment-info">
+              <div class="attachment-icon">📄</div>
+              <div>
+                <div class="attachment-name" id="modalAttachmentName">Document.pdf</div>
+                <div class="attachment-size">Official College Circular</div>
+              </div>
+            </div>
+            <a href="#" id="modalAttachmentDownloadBtn" target="_blank" class="btn btn-secondary" style="font-size: 0.8rem; padding: 0.45rem 0.9rem;">
+              Download File 📥
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <span style="font-size: 0.8rem; color: var(--text-muted);">Posted by: <strong id="modalNoticePostedBy">Principal Office</strong></span>
+        <div style="display: flex; gap: 0.5rem;">
+          <button class="btn btn-secondary" onclick="window.print()">Print Notice 🖨️</button>
+          <button class="btn btn-primary" id="modalCloseFooterBtn">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Professional Footer -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>Kongu Engineering College</h4>
+          <p style="font-size: 0.88rem; line-height: 1.6; margin-bottom: 1rem;">
+            Perundurai, Erode - 638060, Tamil Nadu, India.<br>
+            Autonomous Institution affiliated to Anna University, Chennai.<br>
+            Accredited by NAAC with 'A++' Grade.
+          </p>
+          <div style="display: flex; gap: 0.5rem;">
+            <a href="notices.html" class="btn btn-accent" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">Student Notice Board</a>
+            <a href="login.html" class="btn btn-outline-white" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">Admin Login</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Notice Categories</h4>
+          <ul class="footer-links">
+            <li><a href="notices.html?category=EXAMINATION">Examination Cell</a></li>
+            <li><a href="notices.html?category=PLACEMENTS">Placement & Training</a></li>
+            <li><a href="notices.html?category=EVENTS">Symposiums & Events</a></li>
+            <li><a href="notices.html?category=DEPARTMENT">Department Circulars</a></li>
+            <li><a href="notices.html?category=HOLIDAYS">Official Holidays</a></li>
+            <li><a href="notices.html?category=GENERAL">General Announcements</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Quick Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="notices.html">All Notices</a></li>
+            <li><a href="login.html">Administrator Login</a></li>
+            <li><a href="admin-dashboard.html">Admin Dashboard</a></li>
+            <li><a href="#aboutSection">About Portal</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col footer-contact">
+          <h4>Contact Desk</h4>
+          <p>📞 Phone: +91 4294 226555, 226666</p>
+          <p>✉️ Email: info@kongu.ac.in</p>
+          <p>🌐 Web: www.kongu.ac.in</p>
+          <p>🕒 Hours: Mon - Fri, 8:45 AM - 4:45 PM</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Kongu Engineering College (KEC). All Rights Reserved. Built for College Mini Project.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/api.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>
